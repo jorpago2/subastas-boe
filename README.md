@@ -70,9 +70,9 @@ npm run build
 
 ## Documentación y anexos
 
-Las fichas enlazan a la documentación del BOE e indican si los anexos ya no son accesibles o requieren sesión. Se ha consultado la información general de las 33 subastas de la muestra. El certificado de cierre se enlaza cuando aparece; no se presupone que pueda descargarse.
+Las fichas enlazan a la documentación del BOE e indican si los anexos ya no son accesibles o requieren sesión. Se ha consultado la información general de las 33 subastas de la muestra. Los certificados de cierre disponibles se han descargado y contrastado con los resultados.
 
-Se han identificado con sesión tres documentos de `SUB-AT-2026-25R2986001105`: condiciones generales, certificado de dominio y cargas y catastro. Sus enlaces se conservan en `authenticatedDocuments`; el inventario de anexos de bienes y lotes sigue siendo parcial. Los archivos permanecen alojados en el BOE y no se han copiado al repositorio.
+Se han revisado los anexos disponibles de las 33 subastas del catálogo. Los enlaces obtenidos con sesión se conservan en `authenticatedDocuments`. En 11 subastas antiguas solo se pudo recuperar el certificado de cierre: los demás anexos ya no están accesibles.
 
 ```sh
 npm run import -- --documents-only
@@ -81,6 +81,8 @@ npm run build
 
 ## Resúmenes de documentos
 
-La ficha `SUB-AT-2026-25R2986001105` incluye un resumen de sus tres PDF (13 páginas revisadas), con hechos extraídos, páginas de origen, fecha y huellas SHA-256 en `documentAnalysis`. El certificado registral es un escaneo y se revisó visualmente. Se distinguen las cargas registradas en abril de 2025 de las que puedan subsistir tras la venta; estas últimas no están confirmadas.
+Las 33 fichas incluyen resúmenes concisos de 75 PDF (310 páginas en total), con hechos extraídos, páginas de origen, fecha y huellas SHA-256 en `documentAnalysis`. La lectura se ha repartido entre subagentes Luna-max y se ha revisado antes de integrar los resultados. Los escaneos se han inspeccionado visualmente.
 
-Los originales descargados se conservan en `data/documents/`, fuera de Git. El catálogo público contiene el resumen y los datos relevantes del inmueble, sin reproducir los datos personales de los titulares. La importación conserva el análisis existente; no genera resúmenes automáticos para otras subastas.
+Los certificados de cierre recuperados aportan `certifiedOutcome`, que tiene prioridad en la web sobre el resultado del HTML. Se conserva el detalle de pujas por lote y se distingue de la adjudicación definitiva.
+
+Los originales descargados se conservan en `data/documents/`, fuera de Git. El catálogo público contiene los resúmenes y datos relevantes, sin reproducir los datos personales de los titulares. La importación conserva los análisis y resultados certificados existentes; no descarga ni analiza automáticamente los anexos de nuevas subastas. La cobertura sigue limitada a las 33 fichas actuales.

@@ -50,6 +50,7 @@ async function scan(query, category, code, cap) {
       if (previous && JSON.parse(previous.record).authenticatedOutcome) record.authenticatedOutcome = JSON.parse(previous.record).authenticatedOutcome;
       if (previous && JSON.parse(previous.record).authenticatedDocuments) record.authenticatedDocuments = JSON.parse(previous.record).authenticatedDocuments;
       if (previous && JSON.parse(previous.record).documentAnalysis) record.documentAnalysis = JSON.parse(previous.record).documentAnalysis;
+      if (previous && JSON.parse(previous.record).certifiedOutcome) record.certifiedOutcome = JSON.parse(previous.record).certifiedOutcome;
       if (record.status === 'Pasada') record.outcome = parseOutcome(await request(`${row.url}&ver=5`), row.id);
       upsert.run(row.id, JSON.stringify(record));
       console.log(`${row.id} · ${category} · ${row.status}`);
