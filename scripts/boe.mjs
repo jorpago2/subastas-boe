@@ -49,3 +49,20 @@ export function parseGoods(html) {
   });
   return { provinces: [...provinces], towns: [...towns] };
 }
+
+export function parseOutcome(html, id) {
+  const $ = load(html);
+  if (clean($('#contenido > h2').text()) !== `Subasta ${id}`) throw new Error(`Resultado inesperado: ${id}`);
+  const block = $('#idBloqueDatos8');
+  if (!block.length) throw new Error(`Sección de pujas no reconocida: ${id}`);
+  const text = clean(block.text());
+  const lotBids = block.find('tbody tr').toArray().map(row => {
+    const lot = clean($(row).find('[headers="lote"]').text());
+    const amount = clean($(row).find('[headers="cantidad"]').text());
+    if (!lot) throw new Error(`Tabla de lotes no reconocida: ${id}`);
+    return { lot, highestBid: money(amount), status: /sin puja/i.test(amount) ? 'Sin pujas' : money(amount) !== null ? 'Con pujas' : 'No publicado' };
+  });
+  const noBids = /la subasta no ha recibido pujas/i.test(text);
+  const highestBid = lotBids.length ? null : money(clean(block.find('strong.destaca').text()));
+  return { status: lotBids.length ? 'Por lotes' : noBids ? 'Sin pujas' : highestBid !== null ? 'Con pujas' : 'No publicado', highestBid, lotBids, source: `${origin}detalleSubasta.php?idSub=${id}&ver=5`, checkedAt: new Date().toISOString() };
+}

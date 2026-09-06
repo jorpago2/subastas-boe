@@ -6,7 +6,7 @@ Buscador con React y Carbon de IBM para todos los bienes, con objetivo de histó
 
 Primera versión con 33 subastas reales: 12 antiguas de enero de 2016, 12 activas y 9 próximas al comprobarlas. El histórico está incompleto. Hay búsqueda sin tildes, filtros por tipo de bien, año de inicio, provincia y estado, ordenación y fichas con enlaces oficiales.
 
-La revisión visual e interactiva está pendiente porque el navegador interno no aparece conectado. Web pública: https://jorpago2.github.io/subastas-boe/.
+La ficha de resultados por lotes se ha comprobado en el navegador interno en escritorio. Web pública: https://jorpago2.github.io/subastas-boe/.
 
 ## Desarrollo
 
@@ -38,7 +38,7 @@ Importes en céntimos; null significa dato no recuperado, no cero. Fechas ISO co
 
 ## Cobertura y pendientes
 
-- Validar visualmente y probar la interacción antes de publicar.
+- Completar la revisión visual e interactiva del resto de flujos y en móvil.
 - Recuperar el histórico completo por periodos y dividir las exportaciones por año antes de ampliar el volumen. Por ahora se usa un único archivo para la muestra.
 - El importador usa el HTML público, no una API de subastas. Cambios en el portal pueden exigir ajustes. El robots.txt del portal indica Disallow: /; antes de una descarga masiva o periódica, resolver el acceso automatizado con el BOE o una fuente autorizada.
 - La muestra no es aleatoria ni representativa del mercado. Los estados son los de la última consulta, no datos en directo.
@@ -46,3 +46,24 @@ Importes en céntimos; null significa dato no recuperado, no cero. Fechas ISO co
 - Algunos documentos antiguos ya no son accesibles.
 
 Fuentes: https://subastas.boe.es/ y documentación y ejemplos oficiales de Carbon consultados mediante Carbon MCP. Proyecto independiente, sin afiliación con el BOE ni IBM. Las credenciales de Carbon permanecen fuera del repositorio.
+
+## Resultados de subastas finalizadas
+
+Las fichas y tarjetas muestran «Sin pujas», la puja máxima publicada o el resultado por lotes. Los importes vacíos se conservan como «No publicado». Ninguna puja se presenta como adjudicación definitiva.
+
+Para recuperar solo los resultados de las subastas pasadas ya guardadas:
+
+```sh
+npm run import -- --results-only
+```
+
+Se conserva la URL de origen y una fecha de comprobación independiente. La importación normal también consulta los resultados de las subastas pasadas.
+
+La subasta `SUB-JV-2015-1849` incluye los resultados de sus cuatro lotes comprobados el 6 de septiembre de 2026 con sesión del BOE: 51.000,00 €, 127.708,95 €, 141.151,99 € y sin pujas. Se guardan en `authenticatedOutcome`, con procedencia y fecha, y se muestran con esa indicación en la web. La importación pública conserva estos datos. No se guardan credenciales ni cookies en la base de datos o el catálogo.
+
+Para exportar la base de datos local sin consultar el BOE y reconstruir la web:
+
+```sh
+npm run import -- --export-only
+npm run build
+```

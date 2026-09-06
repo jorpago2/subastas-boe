@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { money, status, parseListing, parseDetail } from './boe.mjs';
+import { money, status, parseListing, parseDetail, parseOutcome } from './boe.mjs';
 test('Importes en céntimos y estados oficiales, sin inferir fechas', () => {
   assert.equal(money('172.000,00 €'), 17200000);
   assert.equal(money('0,00 €'), 0);
@@ -10,6 +10,18 @@ test('Importes en céntimos y estados oficiales, sin inferir fechas', () => {
   assert.equal(status('Próxima apertura'), 'Próxima');
   assert.equal(status('Texto nuevo'), 'Sin confirmar');
   assert.equal(status('Pendiente de finalización y devolución de depósitos con reserva'), 'Pasada');
+});
+test('Resultados: distingue sin pujas, importe publicado y lotes con importe vacío', () => {
+  const wrap = body => `<div id="contenido"><h2>Subasta SUB-JA-2015-842</h2><div id="idBloqueDatos8">${body}</div></div>`;
+  assert.equal(parseOutcome(wrap('<p>La subasta no ha recibido pujas.</p>'), 'SUB-JA-2015-842').status, 'Sin pujas');
+  const bid = parseOutcome(wrap('<strong class="destaca">5.500,00 €</strong>'), 'SUB-JA-2015-842');
+  assert.equal(bid.highestBid, 550000);
+  assert.equal(bid.status, 'Con pujas');
+  const lots = parseOutcome(wrap('<table><tbody><tr><td headers="lote">1</td><td headers="cantidad"></td></tr><tr><td headers="lote">2</td><td headers="cantidad">Sin puja</td></tr></tbody></table>'), 'SUB-JA-2015-842');
+  assert.equal(lots.status, 'Por lotes');
+  assert.equal(lots.highestBid, null);
+  assert.deepEqual(lots.lotBids.map(lot => lot.status), ['No publicado','Sin pujas']);
+  assert.throws(() => parseOutcome('<html>Acceso denegado</html>', 'SUB-JA-2015-842'));
 });
 test('Falla ante respuestas ajenas al catálogo, conserva total y paginación', () => {
   assert.throws(() => parseListing('<html>Acceso denegado</html>'));
