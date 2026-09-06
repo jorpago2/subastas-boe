@@ -39,3 +39,10 @@ h1 { font-size:clamp(36px,4.4vw,60px); line-height:1.08; letter-spacing:-1.5px; 
 .documents ul { list-style: none; padding: 0; margin-bottom: 1rem; }
 .documents li { padding-block: .5rem; }
 .documents a { overflow-wrap: anywhere; }
+
+.document-summary { margin-block: 1.5rem; padding: 1.25rem; background: #f4f4f4; border-left: 3px solid #0f62fe; }
+.document-summary h4 { margin-bottom: 1rem; }
+.document-summary ul { list-style: disc; padding-left: 1.25rem; }
+.document-summary li { margin-bottom: .75rem; line-height: 1.5; }
+.document-summary strong { font-weight: 600; }
+.document-summary summary { cursor: pointer; color: #0f62fe; margin-block: 1rem; }

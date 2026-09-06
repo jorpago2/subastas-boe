@@ -78,3 +78,9 @@ Se han identificado con sesión tres documentos de `SUB-AT-2026-25R2986001105`: 
 npm run import -- --documents-only
 npm run build
 ```
+
+## Resúmenes de documentos
+
+La ficha `SUB-AT-2026-25R2986001105` incluye un resumen de sus tres PDF (13 páginas revisadas), con hechos extraídos, páginas de origen, fecha y huellas SHA-256 en `documentAnalysis`. El certificado registral es un escaneo y se revisó visualmente. Se distinguen las cargas registradas en abril de 2025 de las que puedan subsistir tras la venta; estas últimas no están confirmadas.
+
+Los originales descargados se conservan en `data/documents/`, fuera de Git. El catálogo público contiene el resumen y los datos relevantes del inmueble, sin reproducir los datos personales de los titulares. La importación conserva el análisis existente; no genera resúmenes automáticos para otras subastas.

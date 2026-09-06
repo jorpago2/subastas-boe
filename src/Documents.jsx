@@ -2,6 +2,20 @@ import React from 'react';
 import { Link } from '@carbon/react';
 import { ArrowUpRight } from '@carbon/react/icons';
 
+export function DocumentSummary({ row }) {
+  const analysis = row.documentAnalysis;
+  if (!analysis) return null;
+  return <section className="document-summary" aria-label="Resumen de los documentos">
+    <h4>Los documentos, en pocas palabras</h4>
+    <ul>{analysis.points.map(point => <li key={point.title}><strong>{point.title}.</strong> {point.text}</li>)}</ul>
+    <p className="detail-note">{analysis.limitations}</p>
+    <details><summary>Fuentes del resumen · {analysis.sources.length} PDF revisados</summary>
+      <ul>{analysis.sources.map(source => <li key={source.url}><Link href={source.url} target="_blank" rel="noreferrer">{source.title}</Link> · {source.pages} páginas{source.date && ` · documento de ${source.date}`}</li>)}</ul>
+      <p className="detail-note">{analysis.points.map(point => `${point.title}: ${point.evidence}`).join(' · ')}</p>
+    </details>
+  </section>;
+}
+
 export default function Documents({ row }) {
   const docs = row.documents;
   const items = [...(docs?.items || []), ...(row.authenticatedDocuments?.items || [])];
