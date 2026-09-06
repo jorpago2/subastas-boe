@@ -50,6 +50,20 @@ export function parseGoods(html) {
   return { provinces: [...provinces], towns: [...towns] };
 }
 
+export function parseDocuments(html, id) {
+  const $ = load(html);
+  if (clean($('#contenido > h2').text()) !== `Subasta ${id}` || !$('#idBloqueDatos1').length) throw new Error(`Documentación inesperada: ${id}`);
+  const text = clean($('#idBloqueDatos1').text());
+  const items = [];
+  $('#contenido a[href]').each((_, element) => {
+    const link = $(element), url = new URL(link.attr('href'), origin);
+    if (url.origin !== new URL(origin).origin || url.searchParams.get('idSub') !== id || link.find('img').length) return;
+    if (!/\/(verDocumento|verCertificadoCierre)\.php$/.test(url.pathname)) return;
+    if (!items.some(item => item.url === url.href)) items.push({ title: clean(link.text()) || 'Documento del BOE', url: url.href });
+  });
+  return { status: /Documentos no accesibles/i.test(text) ? 'unavailable' : /información complementaria debe.*Iniciar sesión/i.test(text) ? 'login-required' : 'checked', items, source: `${origin}detalleSubasta.php?idSub=${id}`, checkedAt: new Date().toISOString() };
+}
+
 export function parseOutcome(html, id) {
   const $ = load(html);
   if (clean($('#contenido > h2').text()) !== `Subasta ${id}`) throw new Error(`Resultado inesperado: ${id}`);

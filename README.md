@@ -67,3 +67,14 @@ Para exportar la base de datos local sin consultar el BOE y reconstruir la web:
 npm run import -- --export-only
 npm run build
 ```
+
+## Documentación y anexos
+
+Las fichas enlazan a la documentación del BOE e indican si los anexos ya no son accesibles o requieren sesión. Se ha consultado la información general de las 33 subastas de la muestra. El certificado de cierre se enlaza cuando aparece; no se presupone que pueda descargarse.
+
+Se han identificado con sesión tres documentos de `SUB-AT-2026-25R2986001105`: condiciones generales, certificado de dominio y cargas y catastro. Sus enlaces se conservan en `authenticatedDocuments`; el inventario de anexos de bienes y lotes sigue siendo parcial. Los archivos permanecen alojados en el BOE y no se han copiado al repositorio.
+
+```sh
+npm run import -- --documents-only
+npm run build
+```

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { money, status, parseListing, parseDetail, parseOutcome } from './boe.mjs';
+import { money, status, parseListing, parseDetail, parseOutcome, parseDocuments } from './boe.mjs';
 test('Importes en céntimos y estados oficiales, sin inferir fechas', () => {
   assert.equal(money('172.000,00 €'), 17200000);
   assert.equal(money('0,00 €'), 0);
@@ -34,4 +34,14 @@ test('Falla ante respuestas ajenas al catálogo, conserva total y paginación', 
   assert.equal(detail.start.slice(0,4), '2016');
   assert.equal(detail.value, null);
   assert.throws(() => parseDetail('<html>Ficha eliminada</html>', 'SUB-JA-2015-1278'));
+});
+
+test('Documentos: conserva cierre, excluye normativa y distingue acceso restringido', () => {
+  const wrap = text => '<div id="contenido"><h2>Subasta SUB-JA-2015-842</h2><a href="./verCertificadoCierre.php?idSub=SUB-JA-2015-842">Certificado de cierre</a><div id="idBloqueDatos1">'+text+'</div></div>';
+  const result = parseDocuments(wrap('Documentos no accesibles <a href="/normativa/condiciones.pdf">Normativa</a>'), 'SUB-JA-2015-842');
+  assert.equal(result.status, 'unavailable');
+  assert.equal(result.items.length, 1);
+  assert.ok(result.items[0].url.startsWith('https://subastas.boe.es/verCertificadoCierre.php'));
+  assert.equal(parseDocuments(wrap('Para consultar la información complementaria debe Iniciar sesión'), 'SUB-JA-2015-842').status, 'login-required');
+  assert.throws(() => parseDocuments('<html>Error</html>', 'SUB-JA-2015-842'));
 });
