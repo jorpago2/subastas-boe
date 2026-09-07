@@ -11,9 +11,9 @@ export default function PropertyDashboard({ row, currency, date, factValue }) {
   const metrics = [
     ['Valor de subasta', currency(row.value), 'Importe de referencia del BOE'],
     ['Valor de subasta por m²', auctionPricePerM2 != null ? `${auctionPricePerM2.toLocaleString('es-ES', { maximumFractionDigits: 2 })} €/m²` : 'No consta', 'Calculado con el valor de subasta y la superficie publicada'],
-    ['Tasación publicada', currency(facts?.appraisalValue), 'Tasación documental, no valoración de mercado'],
+    ...(facts?.appraisalValue != null ? [['Tasación publicada', currency(facts.appraisalValue), 'Tasación documental, no valoración de mercado']] : []),
     ['Superficie publicada', facts?.surfaceM2 ? `${facts.surfaceM2.toLocaleString('es-ES')} m²` : 'No consta', facts?.surfaceKind ? `Superficie ${facts.surfaceKind}` : 'Sin superficie identificada'],
-    ['Tasación por m²', facts?.appraisalPricePerM2 != null ? `${facts.appraisalPricePerM2.toLocaleString('es-ES', { maximumFractionDigits: 0 })} €/m²` : 'No consta', 'Calculada con la tasación y superficie disponibles'],
+    ...(facts?.appraisalPricePerM2 != null ? [['Tasación por m²', `${facts.appraisalPricePerM2.toLocaleString('es-ES', { maximumFractionDigits: 0 })} €/m²`, 'Calculada con la tasación y superficie disponibles']] : []),
   ];
   const situations = [
     ['occupancy', 'Ocupación', 'Situación indicada en la documentación'],
