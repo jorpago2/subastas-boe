@@ -56,7 +56,7 @@ Se conservan los enlaces oficiales y se indica si los documentos requieren sesi�
 
 Los 75 PDF y los análisis de las 33 fichas anteriores siguen conservados localmente en `data/documents/` y SQLite, fuera de la selección de Valencia. Los originales no se publican en Git. No se guardan credenciales ni cookies en el catálogo o la base de datos.
 
-Los resultados certificados (`certifiedOutcome`) tienen prioridad sobre los consultados con sesión y los del HTML público. La puja máxima no se presenta como precio de adjudicación definitiva. La exportación pública usa títulos genéricos de inmueble y anonimiza nombres de particulares; la descripción registral completa se conserva solo localmente. Las importaciones conservan los análisis y resultados contrastados existentes.
+Los resultados certificados (`certifiedOutcome`) tienen prioridad sobre los consultados con sesión y los del HTML público. La puja máxima no se presenta como precio de adjudicación definitiva. La exportación pública usa títulos genéricos de inmueble y anonimiza nombres de particulares; conserva una consulta de dirección separada para centrar el mapa de Google Maps. La descripción registral completa se conserva solo localmente. Las importaciones conservan los análisis y resultados contrastados existentes.
 
 ## Limitaciones
 
