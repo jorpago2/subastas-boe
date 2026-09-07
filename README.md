@@ -10,7 +10,7 @@ Falta el histórico de Valencia de 2016 a 2024. La descarga de los PDF disponibl
 
 En 97 fichas canceladas o suspendidas el BOE permite encontrarlas por periodo, pero no publica la fecha de inicio en el detalle. Se conserva como desconocida: esas fichas no aparecen al filtrar por año, aunque sí en el catálogo y en el filtro de estado.
 
-Los filtros de la web permiten buscar por texto, año y estado; restablecerlos mantiene el ámbito de inmuebles de Valencia.
+Los filtros de la web permiten buscar por texto, año, estado, municipio, rangos de superficie, precio tasado y €/m², además de vivienda habitual, ocupación y cargas documentales. Estos tres últimos campos y los importes documentales solo se rellenan cuando el anexo contiene una afirmación explícita; «No consta» se mantiene como un estado independiente.
 
 ## Desarrollo y publicación
 

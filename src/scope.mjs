@@ -1,4 +1,5 @@
 import exclusions from '../data/analysis/scope-exclusions.json' with { type: 'json' };
+import { deriveFacts } from './facts.mjs';
 export const excludedIds = new Set(exclusions.records.filter(r => r.excludeFromRealEstateCatalog).map(r => r.id));
 export const scope = { id: 'valencia-inmuebles', category: 'Inmuebles', province: 'Valencia', provinceCode: '46' };
 // La selección procede del filtro de bienes del BOE, no de la sede del juzgado.
@@ -30,6 +31,7 @@ export const sanitizePublicRecord = record => {
   const towns = Array.isArray(copy.towns) ? copy.towns.filter(Boolean).join(', ') : '';
   copy.description = `Inmueble${copy.lots && copy.lots !== 'Sin lotes' ? ' con varios lotes' : ''}${towns ? ` en ${towns}` : ''}`;
   copy.mapQuery = mapQuery(record.description) || [towns, Array.isArray(copy.provinces) ? copy.provinces.filter(Boolean).join(', ') : ''].filter(Boolean).join(', ');
+  copy.facts = deriveFacts(record);
   copy.documentAnalysis = anonymizeValue(copy.documentAnalysis);
   return copy;
 };
