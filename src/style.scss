@@ -47,3 +47,35 @@ h1 { font-size:clamp(36px,4.4vw,60px); line-height:1.08; letter-spacing:-1.5px; 
 .document-summary li { margin-bottom: .75rem; line-height: 1.5; }
 .document-summary strong { font-weight: 600; }
 .document-summary summary { cursor: pointer; color: #0f62fe; margin-block: 1rem; }
+
+.property-dashboard { margin-block: 24px 32px; }
+.dashboard-heading { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:16px; }
+.dashboard-heading h4 { font-size:20px; }
+.dashboard-heading span { font-size:11px; color:#525252; }
+.detail .dashboard-metrics { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; margin:0; background:#e0e0e0; border:1px solid #e0e0e0; }
+.dashboard-metric { background:#fff; padding:20px; border-top:3px solid #0f62fe; }
+.detail .dashboard-metric dt { font-size:12px; margin-bottom:12px; }
+.detail .dashboard-metric dd { font-size:clamp(21px,3vw,30px); line-height:1.2; font-weight:400; overflow-wrap:anywhere; }
+.dashboard-metric p, .dashboard-situations p { font-size:11px; line-height:1.5; color:#525252; margin-top:10px; }
+.dashboard-metric.is-unknown { border-top-color:#c6c6c6; }
+.dashboard-metric.is-unknown dd { color:#6f6f6f; }
+.dashboard-situations { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-block:20px; }
+.dashboard-situations>div { padding:16px; background:#f4f4f4; }
+.property-dashboard h5 { font-size:13px; font-weight:600; margin-bottom:12px; }
+.dashboard-situations .cds--tag { margin:0; }
+.dashboard-bottom { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; padding-top:20px; border-top:1px solid #e0e0e0; }
+.detail .dashboard-bottom dl { display:block; margin:0; }
+.dashboard-bottom dl>div { display:flex; justify-content:space-between; gap:16px; margin-top:12px; }
+.detail .dashboard-bottom dd { font-size:14px; text-align:right; }
+.dashboard-note { font-size:12px; line-height:1.5; color:#525252; margin-top:20px; }
+.detail-all-data { margin-block:24px; border-block:1px solid #e0e0e0; }
+.detail-all-data summary { cursor:pointer; color:#0f62fe; padding-block:16px; font-size:14px; }
+@media(max-width:680px) {
+  .dashboard-heading { display:block; }
+  .dashboard-heading span { display:block; margin-top:8px; }
+  .dashboard-metric { padding:14px; }
+  .dashboard-situations { grid-template-columns:1fr; gap:8px; }
+  .dashboard-situations>div { display:grid; grid-template-columns:1fr auto; gap:0 12px; }
+  .dashboard-situations p { grid-column:1/-1; margin-top:4px; }
+  .dashboard-bottom { grid-template-columns:1fr; }
+}
