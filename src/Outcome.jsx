@@ -4,7 +4,7 @@ const amount = cents => new Intl.NumberFormat('es-ES', {style:'currency', curren
 export default function Outcome({ row, compact = false }) {
   if (row.status !== 'Pasada') return null;
   const result = row.certifiedOutcome || row.authenticatedOutcome || row.outcome;
-  const label = !result ? 'Pendiente de consultar' : result.status === 'Con pujas' ? `Puja máxima: ${amount(result.highestBid)}` : result.status === 'Por lotes' ? 'Resultado por lotes' : result.status === 'No publicado' ? 'Pujas: dato no publicado' : 'Sin pujas';
+  const label = !result ? 'Pendiente de consultar' : result.status === 'Con pujas' && Number.isSafeInteger(result.highestBid) ? `Puja máxima: ${amount(result.highestBid)}` : result.status === 'Por lotes' ? 'Resultado por lotes' : result.status === 'Sin pujas' ? 'Sin pujas' : result.status === 'Cancelada' ? 'Subasta cancelada' : 'Pujas: dato no publicado';
   if (compact) return <p className="outcome-summary">{label}</p>;
   return <section className="outcome" aria-label="Resultado de la subasta">
     <h4>Cómo terminó</h4><p>{label}</p>

@@ -5,12 +5,19 @@ import { ArrowUpRight } from '@carbon/react/icons';
 export function DocumentSummary({ row }) {
   const analysis = row.documentAnalysis;
   if (!analysis) return null;
+  const sources = new Map(analysis.sources.map(source => [source.sha256 || source.url, source]));
+  for (const pending of analysis.pendingSources || []) {
+    const key = pending.sha256 || pending.url;
+    sources.set(key, { ...pending, ...sources.get(key), pagesNeedingReview: pending.pendingPages });
+  }
   return <section className="document-summary" aria-label="Resumen de los documentos">
     <h4>Los documentos, en pocas palabras</h4>
+    {['automatic-extraction', 'partial'].includes(analysis.status) && <p className="detail-note">Lectura automática parcial · requiere revisión de los anexos.</p>}
+    {analysis.status === 'reviewed-partial' && <p className="detail-note">Resumen parcial · documentación incompleta, ilegible o pendiente de revisión. Consulta las limitaciones indicadas debajo.</p>}
     <ul>{analysis.points.map(point => <li key={point.title}><strong>{point.title}.</strong> {point.text}</li>)}</ul>
     <p className="detail-note">{analysis.limitations}</p>
-    <details><summary>Fuentes del resumen · {analysis.sources.length} PDF {analysis.sources.length === 1 ? 'revisado' : 'revisados'}</summary>
-      <ul>{analysis.sources.map(source => <li key={source.url}><Link href={source.url} target="_blank" rel="noreferrer">{source.title}</Link> · {source.pages} {source.pages === 1 ? 'página' : 'páginas'}{source.date && ` · documento de ${source.date}`}</li>)}</ul>
+    <details><summary>Fuentes y revisión · {sources.size} PDF</summary>
+      <ul>{[...sources.values()].map(source => <li key={source.url}><Link href={source.url} target="_blank" rel="noreferrer">{source.title}</Link> · {source.pages} {source.pages === 1 ? 'página' : 'páginas'}{source.date && ` · documento de ${source.date}`}{Array.isArray(source.reviewedPages) && ` · ${source.reviewedPages.length} páginas revisadas`}{!!source.pagesNeedingReview?.length && ` · pendientes: ${source.pagesNeedingReview.join(', ')}`}</li>)}</ul>
       {analysis.portalSource && <Link href={analysis.portalSource} target="_blank" rel="noreferrer">Ficha del BOE e información adicional</Link>}
       <p className="detail-note">{analysis.points.map(point => `${point.title}: ${point.evidence}`).join(' · ')}</p>
     </details>
