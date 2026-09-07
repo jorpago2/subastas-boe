@@ -106,3 +106,15 @@ npm run build
 ```
 
 El paso OCR requiere Windows y su reconocedor de español. Las revisiones individuales son artefactos locales de los agentes; los scripts de extracción no las recrean ni las marcan como completas automáticamente. Las autopruebas se ejecutan con `--self-test` en los dos scripts de análisis.
+
+## Referencias de mercado: Idealista
+
+Las fichas incluyen barrio y distrito cuando hay coincidencia única de calle y número con los portales oficiales de Valencia y su intersección con los límites municipales actuales. `node scripts/assign-neighborhoods.mjs` regenera `public/data/property-neighborhoods.json` desde el catálogo público y el Geoportal municipal (capas 217, 223, 224 y 225). No traduce nombres de calles ni fuerza coincidencias aproximadas. Cobertura inicial: 24 fichas verificadas; 94 direcciones de Valencia sin coincidencia inequívoca. La asignación se descarta si cambia la dirección de la ficha.
+
+Los precios eligen el ámbito más concreto con valor del mismo mes, por separado para venta y alquiler. Se han recuperado 14 históricos de distrito; no históricos propios de barrio. Si falta el distrito se utiliza el municipio y se indica junto a la cifra. Para importar distritos, las fuentes añaden `level: "district"` y `municipality: "València"`. La importación reemplaza el conjunto completo: incluir también las fuentes municipales que se quieran conservar.
+
+El dashboard consulta `public/data/idealista-history.json`: series mensuales desde 2016 de los informes públicos de precios de vivienda de Idealista para localidades de la provincia de Valencia. La cobertura es parcial y venta y alquiler pueden tener meses o localidades distintos. Cada serie conserva el enlace al histórico y la fecha de consulta. Los valores están en euros por m² (venta) y euros por m² y mes (alquiler), no en céntimos.
+
+La referencia se selecciona por localidad exacta, con equivalencias explícitas de algunos nombres, y mes de inicio de la subasta. No disponemos de la fecha del anuncio; el año del identificador BOE no se usa como sustituto. No se extrapolan meses, no se asignan barrios sin ubicación verificada y no se rellena con medias provinciales. Se muestra contexto del mercado residencial, no una valoración del bien ni una referencia aplicable a locales, terrenos o garajes.
+
+La descarga HTTP directa respondió 403; las tablas se recuperaron mediante consulta web. Para importar nuevas consultas, `node scripts/idealista.mjs ruta/fuentes.json` acepta una lista de objetos `{name, url, operation, retrievedAt, text}` con las tablas de los históricos. El texto puede llevar prefijos de línea `L123:`. El importador excluye `n.d.` y periodos anteriores a 2016, registra tablas no recuperables y no reemplaza el archivo si todas fallan. Después se ejecuta `npm run build`. No hay actualización automática ni credenciales de Idealista en la web.

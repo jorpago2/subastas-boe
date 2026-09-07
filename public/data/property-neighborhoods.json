@@ -1,0 +1,439 @@
+{
+  "retrievedAt": "2026-09-07T22:25:09.458Z",
+  "source": "https://geoportal.valencia.es/server/rest/services/OPENDATA/UrbanismoEInfraestructuras/MapServer",
+  "method": "Calle y número exactos en portales municipales, intersección con barrios oficiales actuales",
+  "assignments": {
+    "SUB-AT-2025-24R4686001596": {
+      "address": "Calle NELO EL FARINER, 4, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "BENIFARAIG",
+      "neighborhoodId": "171",
+      "district": "POBLATS DEL NORD",
+      "districtId": "17",
+      "streetCode": 81389,
+      "portalId": 242945,
+      "coordinates": [
+        -0.38576192434160417,
+        39.53077689157641
+      ]
+    },
+    "SUB-AT-2026-25R4186001705": {
+      "address": "Calle CONCHITA PIQUER, 5, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "EL CALVARI",
+      "neighborhoodId": "043",
+      "district": "CAMPANAR",
+      "districtId": "4",
+      "streetCode": 19800,
+      "portalId": 281205,
+      "coordinates": [
+        -0.3917047732436083,
+        39.486641001388556
+      ]
+    },
+    "SUB-AT-2026-25R4686001330": {
+      "address": "Calle CAROLINA ALVAREZ, 29, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "LA CREU DEL GRAU",
+      "neighborhoodId": "123",
+      "district": "CAMINS AL GRAU",
+      "districtId": "12",
+      "streetCode": 15240,
+      "portalId": 270876,
+      "coordinates": [
+        -0.34432583983822035,
+        39.46059573945971
+      ]
+    },
+    "SUB-AT-2026-25R4686001575": {
+      "address": "Calle TRES FORQUES, 10, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "PATRAIX",
+      "neighborhoodId": "081",
+      "district": "PATRAIX",
+      "districtId": "8",
+      "streetCode": 73950,
+      "portalId": 275810,
+      "coordinates": [
+        -0.38960450654806855,
+        39.46437224102224
+      ]
+    },
+    "SUB-AT-2026-26R4686001197": {
+      "address": "Calle PLUS ULTRA, 17, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "EN CORTS",
+      "neighborhoodId": "102",
+      "district": "QUATRE CARRERES",
+      "districtId": "10",
+      "streetCode": 59910,
+      "portalId": 267210,
+      "coordinates": [
+        -0.3725736425224598,
+        39.45502228666341
+      ]
+    },
+    "SUB-JA-2024-233740": {
+      "address": "calle Campos Crespo, 102, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "SANT ISIDRE",
+      "neighborhoodId": "082",
+      "district": "PATRAIX",
+      "districtId": "8",
+      "streetCode": 13890,
+      "portalId": 255952,
+      "coordinates": [
+        -0.40331047662142694,
+        39.450648572134455
+      ]
+    },
+    "SUB-JA-2024-239687": {
+      "address": "CALLE PINTOR MANUEL SIGÜENZA, 3, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "PINEDO",
+      "neighborhoodId": "193",
+      "district": "POBLATS DEL SUD",
+      "districtId": "19",
+      "streetCode": 81217,
+      "portalId": 248229,
+      "coordinates": [
+        -0.3393662219664813,
+        39.4218871973457
+      ]
+    },
+    "SUB-JA-2025-241969": {
+      "address": "Calle POETA SERRANO CLAVERO, 10, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "BENICALAP",
+      "neighborhoodId": "161",
+      "district": "BENICALAP",
+      "districtId": "16",
+      "streetCode": 80630,
+      "portalId": 272635,
+      "coordinates": [
+        -0.3900066597046621,
+        39.4908119603137
+      ]
+    },
+    "SUB-JA-2025-243274": {
+      "address": "Avenida Pérez Galdós, 79, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "NOU MOLES",
+      "neighborhoodId": "071",
+      "district": "L'OLIVERETA",
+      "districtId": "7",
+      "streetCode": 57300,
+      "portalId": 239743,
+      "coordinates": [
+        -0.3913116368742306,
+        39.46839168906142
+      ]
+    },
+    "SUB-JA-2025-244337": {
+      "address": "calle BRASIL, 15, VALÈNCIA, España",
+      "municipality": "València",
+      "neighborhood": "NOU MOLES",
+      "neighborhoodId": "071",
+      "district": "L'OLIVERETA",
+      "districtId": "7",
+      "streetCode": 12180,
+      "portalId": 277339,
+      "coordinates": [
+        -0.39595458260194877,
+        39.47093168744222
+      ]
+    },
+    "SUB-JA-2025-244378": {
+      "address": "CALLE DOCTOR JOSEP MARÍA PAREDES SANTOMÁ, 2, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "L'ILLA PERDUDA",
+      "neighborhoodId": "131",
+      "district": "ALGIROS",
+      "districtId": "13",
+      "streetCode": 81502,
+      "portalId": 247515,
+      "coordinates": [
+        -0.3365488697689536,
+        39.46766452158791
+      ]
+    },
+    "SUB-JA-2025-245075": {
+      "address": "calle Pedro Cabanes., 124, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "BENICALAP",
+      "neighborhoodId": "161",
+      "district": "BENICALAP",
+      "districtId": "16",
+      "streetCode": 56490,
+      "portalId": 249346,
+      "coordinates": [
+        -0.3822670489431714,
+        39.49350016025045
+      ]
+    },
+    "SUB-JA-2025-245364": {
+      "address": "Calle DEMOCRACIA, 11, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "NOU MOLES",
+      "neighborhoodId": "071",
+      "district": "L'OLIVERETA",
+      "districtId": "7",
+      "streetCode": 17160,
+      "portalId": 232911,
+      "coordinates": [
+        -0.3963687640255519,
+        39.473961490562225
+      ]
+    },
+    "SUB-JA-2025-248627": {
+      "address": "calle Brasil, 31, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "NOU MOLES",
+      "neighborhoodId": "071",
+      "district": "L'OLIVERETA",
+      "districtId": "7",
+      "streetCode": 12180,
+      "portalId": 235365,
+      "coordinates": [
+        -0.39705869184154924,
+        39.47124567816615
+      ]
+    },
+    "SUB-JA-2025-249696": {
+      "address": "Calle José Aguilar, 49, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "AIORA",
+      "neighborhoodId": "121",
+      "district": "CAMINS AL GRAU",
+      "districtId": "12",
+      "streetCode": 38610,
+      "portalId": 279212,
+      "coordinates": [
+        -0.3398320641337172,
+        39.46628126973819
+      ]
+    },
+    "SUB-JA-2025-253519": {
+      "address": "calle MANUEL MELIÁ I FUSTER -DON PIO-, 30, VALÈNCIA, España",
+      "municipality": "València",
+      "neighborhood": "BENICALAP",
+      "neighborhoodId": "161",
+      "district": "BENICALAP",
+      "districtId": "16",
+      "streetCode": 81737,
+      "portalId": 270273,
+      "coordinates": [
+        -0.38899797007652076,
+        39.49822591464656
+      ]
+    },
+    "SUB-JA-2025-256325": {
+      "address": "Avenida REGNE DE VALENCIA, 87, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "MONTOLIVET",
+      "neighborhoodId": "101",
+      "district": "QUATRE CARRERES",
+      "districtId": "10",
+      "streetCode": 38670,
+      "portalId": 274486,
+      "coordinates": [
+        -0.3612381070378844,
+        39.46244069196081
+      ]
+    },
+    "SUB-JA-2026-256900": {
+      "address": "CALLE ALCUDIA DE CRESPINS, 16, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "TORREFIEL",
+      "neighborhoodId": "152",
+      "district": "RASCANYA",
+      "districtId": "15",
+      "streetCode": 1950,
+      "portalId": 275586,
+      "coordinates": [
+        -0.37377018289968555,
+        39.4943042602322
+      ]
+    },
+    "SUB-JA-2026-260697": {
+      "address": "calle José Aguilar, 8, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "AIORA",
+      "neighborhoodId": "121",
+      "district": "CAMINS AL GRAU",
+      "districtId": "12",
+      "streetCode": 38610,
+      "portalId": 231605,
+      "coordinates": [
+        -0.34116614254658867,
+        39.46313117811738
+      ]
+    },
+    "SUB-JA-2026-260955": {
+      "address": "CALLE TRANSFORMADOR, 21, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "BENICALAP",
+      "neighborhoodId": "161",
+      "district": "BENICALAP",
+      "districtId": "16",
+      "streetCode": 73710,
+      "portalId": 235402,
+      "coordinates": [
+        -0.3928409180729368,
+        39.49508043355602
+      ]
+    },
+    "SUB-JA-2026-262183": {
+      "address": "Calle Calatrava, 10, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "LA SEU",
+      "neighborhoodId": "011",
+      "district": "CIUTAT VELLA",
+      "districtId": "1",
+      "streetCode": 13200,
+      "portalId": 247016,
+      "coordinates": [
+        -0.3773400130376004,
+        39.47628328024815
+      ]
+    },
+    "SUB-JA-2026-264147": {
+      "address": "Calle Cieza, 6, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "SOTERNES",
+      "neighborhoodId": "072",
+      "district": "L'OLIVERETA",
+      "districtId": "7",
+      "streetCode": 18480,
+      "portalId": 239769,
+      "coordinates": [
+        -0.40607726538071853,
+        39.47206992929966
+      ]
+    },
+    "SUB-JC-2025-251590": {
+      "address": "CALLE JURATS, 29, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "TRES FORQUES",
+      "neighborhoodId": "073",
+      "district": "L'OLIVERETA",
+      "districtId": "7",
+      "streetCode": 5490,
+      "portalId": 260058,
+      "coordinates": [
+        -0.4048786598453459,
+        39.468828294005995
+      ]
+    },
+    "SUB-JV-2026-258511": {
+      "address": "Calle CASTELL DE POP, 13, VALENCIA, España",
+      "municipality": "València",
+      "neighborhood": "NATZARET",
+      "neighborhoodId": "115",
+      "district": "POBLATS MARITIMS",
+      "districtId": "11",
+      "streetCode": 17190,
+      "portalId": 235735,
+      "coordinates": [
+        -0.3344199764848732,
+        39.448429245154784
+      ]
+    }
+  },
+  "skipped": {
+    "SUB-AT-2025-23R4686001142": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2025-23R4686001398": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2025-24R4686001743": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2025-24R4686001744": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2025-25R4686001115": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2025-25R4686001169": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2025-25R4686001205": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2025-25R4686001341": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2025-25R4686001342": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2025-25R4686001360": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2025-25R4686001365": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2026-25R4686001322": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2026-25R4686001323": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2026-25R4686001348": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2026-25R4686001381": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2026-25R4686001400": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2026-25R4686001402": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2026-25R4686001403": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2026-25R4686001468": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2026-26R4686001085": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2026-26R4686001086": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2026-26R4686001155": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-AT-2026-26R4686001211": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2024-234432": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2024-238044": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2024-240134": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-241153": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-241246": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-242202": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-242606": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-243468": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-244585": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-245381": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-245859": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-245877": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-246445": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-246493": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-246573": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-247383": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-247384": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-247386": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-247957": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-248053": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-248370": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-248434": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-249331": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-249418": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-249682": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-249987": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-250566": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-251941": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-252282": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-252563": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-252916": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-253435": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-253588": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-253607": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-253883": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-254245": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-255002": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-255759": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-256011": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-256061": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2025-256250": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-257436": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-258138": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-258213": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-258504": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-259081": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-259115": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-259399": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-259859": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-259902": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-260138": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-260208": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-260254": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-261358": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-261564": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-262227": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-262571": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-263590": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-264261": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-264383": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-264515": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-264619": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-264912": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JA-2026-265085": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JV-2025-247885": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JV-2025-252097": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JV-2025-252517": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JV-2025-256128": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JV-2025-256133": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JV-2026-261374": "Sin coincidencia única de calle, número y barrio oficiales",
+    "SUB-JV-2026-264521": "Sin coincidencia única de calle, número y barrio oficiales"
+  }
+}
