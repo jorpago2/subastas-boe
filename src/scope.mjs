@@ -14,10 +14,16 @@ export const anonymizePublicText = value => {
   return value.replace(legalName, '$1 una persona particular').replace(ownershipName, '$1 una persona particular').replace(honorificName, 'persona particular');
 };
 
-const mapQuery = value => {
-  if (typeof value !== 'string') return '';
-  const firstLot = value.replace(/^.*?\bLote\s+1\s*:\s*/iu, '').split(/\bLote\s+2\s*:/iu)[0];
-  return anonymizePublicText(firstLot.split(/\b(?:lind(?:a|e|ante|eros)?|inscripci[oó]n|valor de tasaci[oó]n)\b/iu)[0]).replace(/\s+/g, ' ').trim().slice(0, 320);
+export const propertyMapQuery = record => {
+  const towns = [...new Set((record.towns || []).filter(Boolean))];
+  if (towns.length !== 1 || (record.lots && record.lots !== 'Sin lotes')) return '';
+  const description = String(record.description || '').split(/\b(?:linda|lindero|linderos|inscripci[oó]n)\b/iu)[0];
+  // Solo calle y número: los pisos, fincas registrales y linderos no son direcciones.
+  const matches = [...description.matchAll(/\b(calle|carrer|avenida|avinguda|paseo|passeig|plaza|plaça|cl|av|ps)\b[/.\s]+([\p{L}][\p{L}\s'’.-]{1,70}?)\s*(?:,\s*|\s+)(?:(?:n[úu]mero|n[º°o.]*)\s*)?(\d{1,4})(?!\d)/giu)];
+  if (matches.length !== 1) return '';
+  const [, type, street, number] = matches[0];
+  const expanded = { cl: 'Calle', av: 'Avenida', ps: 'Paseo' }[type.toLowerCase()] || type;
+  return `${expanded} ${street.trim()}, ${number}, ${towns[0]}, España`;
 };
 
 const anonymizeValue = value => Array.isArray(value)
@@ -30,7 +36,7 @@ export const sanitizePublicRecord = record => {
   const copy = structuredClone(record);
   const towns = Array.isArray(copy.towns) ? copy.towns.filter(Boolean).join(', ') : '';
   copy.description = `Inmueble${copy.lots && copy.lots !== 'Sin lotes' ? ' con varios lotes' : ''}${towns ? ` en ${towns}` : ''}`;
-  copy.mapQuery = mapQuery(record.description) || [towns, Array.isArray(copy.provinces) ? copy.provinces.filter(Boolean).join(', ') : ''].filter(Boolean).join(', ');
+  copy.mapQuery = propertyMapQuery(record);
   copy.facts = deriveFacts(record);
   copy.documentAnalysis = anonymizeValue(copy.documentAnalysis);
   return copy;

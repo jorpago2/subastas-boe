@@ -27,7 +27,7 @@ const aliases = new Map([
   [key('Mareny'), key('Sueca')], [key('Mareny de Barraquetes (Sueca)'), key('Sueca')], [key('El Pouet (Sueca)'), key('Sueca')],
   [key('Sueca (El Perello)'), key('Sueca')], [key('Benicalap'), key('València')], [key('Benifareig'), key('València')],
   [key('Benimamet'), key('València')], [key('Benimamet-Beniferri'), key('València')], [key('Nazaret'), key('València')],
-  [key('El Saler-Valencia'), key('València')], [key('El Palmar'), key('València')], [key('La Cañada'), key('València')],
+  [key('El Saler-Valencia'), key('València')],
   [key('Castellar'), key('València')], [key('Massarrojos'), key('València')], [key('Moncada'), key('Moncada')],
   [key('Almardá (Sagunto)'), key('Sagunto')], [key('Sagunto-Port'), key('Sagunto')], [key('Puerti de Sagunto'), key('Sagunto')],
   [key('Sagunt/Sagunto'), key('Sagunto')], [key('Villanueva de Castellón/Castelló de la Ribera'), key('Villanueva de Castellón')],
@@ -37,15 +37,14 @@ const aliases = new Map([
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[character]));
 
 function municipalityFor(row, lookup) {
+  const matches = new Map();
   for (const town of row.towns || []) {
     const townKey = key(town);
     const direct = lookup.get(townKey) || lookup.get(aliases.get(townKey));
-    if (direct) return direct;
-    for (const [candidate, municipality] of lookup) {
-      if (candidate.length > 5 && (townKey.includes(candidate) || candidate.includes(townKey))) return municipality;
-    }
+    if (!direct) return null;
+    matches.set(direct.id, direct);
   }
-  return null;
+  return matches.size === 1 ? [...matches.values()][0] : null;
 }
 
 export default function ResultsMap({ rows, onSelect }) {
@@ -65,7 +64,7 @@ export default function ResultsMap({ rows, onSelect }) {
   }, []);
 
   const lookup = useMemo(() => new Map((municipalities || []).flatMap(municipality => {
-    const names = String(municipality.nombre || '').split(/[\/()]/).map(key).filter(name => name.length > 3);
+    const names = String(municipality.nombre || '').split(/[\/()]/).map(key).filter(Boolean);
     return names.map(name => [name, municipality]);
   })), [municipalities]);
 
@@ -126,7 +125,7 @@ export default function ResultsMap({ rows, onSelect }) {
   const mappedRows = groups.reduce((total, group) => total + group.rows.length, 0);
   const missingRows = rows.length - mappedRows;
   return <section className="results-map" aria-labelledby="results-map-title">
-    <div className="results-map-heading"><div><p className="eyebrow">MAPA DE RESULTADOS</p><h2 id="results-map-title">Inmuebles filtrados</h2><p>{rows.length} {rows.length === 1 ? 'inmueble' : 'inmuebles'} · {groups.length} {groups.length === 1 ? 'municipio' : 'municipios'} con ubicación</p></div><p className="results-map-note">Los marcadores agrupan los inmuebles por municipio. La posición exacta se consulta en cada ficha.</p></div>
+    <div className="results-map-heading"><div><p className="eyebrow">MAPA DE RESULTADOS</p><h2 id="results-map-title">Subastas por municipio</h2><p>{rows.length} {rows.length === 1 ? 'inmueble' : 'inmuebles'} · {groups.length} {groups.length === 1 ? 'municipio' : 'municipios'} con ubicación</p></div><p className="results-map-note">Cada punto representa el centro de un municipio, no la posición del inmueble. Las fichas muestran una búsqueda por dirección cuando se puede identificar.</p></div>
     <div ref={rootRef} className="results-map-canvas" role="application" aria-label="Mapa de inmuebles filtrados" />
     {loadError && <p className="results-map-status">{loadError}</p>}
     {!loadError && !municipalities && <p className="results-map-status">Cargando ubicaciones municipales…</p>}
