@@ -3,7 +3,7 @@ import { mkdir, readFile, writeFile, rename } from 'node:fs/promises';
 import { parseArgs } from 'node:util';
 import { setTimeout as delay } from 'node:timers/promises';
 import { origin, parseListing, parseDetail, parseGoods, parseOutcome, parseDocuments } from './boe.mjs';
-import { scope, inScope } from '../src/scope.mjs';
+import { scope, inScope, sanitizePublicRecord } from '../src/scope.mjs';
 
 const { values } = parseArgs({ options: { current: { type: 'boolean' }, sample: { type: 'boolean' }, 'export-only': { type: 'boolean' }, 'results-only': { type: 'boolean' }, 'documents-only': { type: 'boolean' }, from: { type: 'string' }, to: { type: 'string' }, limit: { type: 'string', default: '50' }, state: { type: 'string', default: '' } } });
 const limit = Number(values.limit);
@@ -71,7 +71,7 @@ async function scan(query, category, code, cap) {
   db.prepare('INSERT INTO scans(record) VALUES (?)').run(JSON.stringify(report));
 }
 async function exportData() {
-  const records = db.prepare('SELECT record FROM auctions ORDER BY id').all().map(row => JSON.parse(row.record)).filter(inScope);
+  const records = db.prepare('SELECT record FROM auctions ORDER BY id').all().map(row => JSON.parse(row.record)).filter(inScope).map(sanitizePublicRecord);
   const history = db.prepare('SELECT record FROM scans ORDER BY id').all().map(row => JSON.parse(row.record)).filter(inScope);
   const scans = [...new Map(history.map(scan => [JSON.stringify([scan.from,scan.to,scan.state,scan.category]),scan])).values()];
   // ponytail: un archivo basta para la muestra; dividir por año antes del histórico completo.

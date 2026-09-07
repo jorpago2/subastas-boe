@@ -3,3 +3,25 @@ export const excludedIds = new Set(exclusions.records.filter(r => r.excludeFromR
 export const scope = { id: 'valencia-inmuebles', category: 'Inmuebles', province: 'Valencia', provinceCode: '46' };
 // La selección procede del filtro de bienes del BOE, no de la sede del juzgado.
 export const inScope = record => record.scope === scope.id && !excludedIds.has(record.id);
+
+const honorificName = /\b(?:don|doña|dª)\s+[A-ZÁÉÍÓÚÜÑ][\p{L}'’-]+(?:\s+[A-ZÁÉÍÓÚÜÑ][\p{L}'’-]+){1,4}/giu;
+const ownershipName = /\b(propiedad de|finca de|tierras de|solar de|terrenos de|casa de|herederos de|herencia de|adquirida por|vendida a)\s+(?:(?:hermanos|viuda|viudo|herederos)\s+)?[A-ZÁÉÍÓÚÜÑ][\p{L}'’-]+(?:\s+[A-ZÁÉÍÓÚÜÑ][\p{L}'’-]+){1,5}/giu;
+
+export const anonymizePublicText = value => {
+  if (typeof value !== 'string' || /^https?:\/\//i.test(value)) return value;
+  return value.replace(ownershipName, '$1 una persona particular').replace(honorificName, 'persona particular');
+};
+
+const anonymizeValue = value => Array.isArray(value)
+  ? value.map(anonymizeValue)
+  : value && typeof value === 'object'
+    ? Object.fromEntries(Object.entries(value).map(([key, item]) => [key, anonymizeValue(item)]))
+    : anonymizePublicText(value);
+
+export const sanitizePublicRecord = record => {
+  const copy = structuredClone(record);
+  const towns = Array.isArray(copy.towns) ? copy.towns.filter(Boolean).join(', ') : '';
+  copy.description = `Inmueble${copy.lots && copy.lots !== 'Sin lotes' ? ' con varios lotes' : ''}${towns ? ` en ${towns}` : ''}`;
+  copy.documentAnalysis = anonymizeValue(copy.documentAnalysis);
+  return copy;
+};
