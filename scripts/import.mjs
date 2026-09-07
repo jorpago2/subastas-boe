@@ -47,7 +47,7 @@ async function scan(query, category, code, cap) {
       const [html, goodsHtml, outcomeHtml] = await Promise.all([
         request(row.url),
         request(`${row.url}&ver=3`),
-        row.status === 'Pasada' ? request(`${row.url}&ver=5`) : null,
+        ['Pasada', 'Activa'].includes(row.status) ? request(`${row.url}&ver=5`) : null,
       ]);
       const detail = { ...parseDetail(html, row.id), documents: parseDocuments(html, row.id) };
       const goods = parseGoods(goodsHtml);
@@ -91,7 +91,7 @@ try {
     }
   } else if (values['results-only']) {
     const records = db.prepare('SELECT record FROM auctions ORDER BY id').all().map(row => JSON.parse(row.record));
-    for (const row of records.filter(row => inScope(row) && row.status === 'Pasada')) {
+    for (const row of records.filter(row => inScope(row) && ['Pasada', 'Activa'].includes(row.status))) {
       row.outcome = parseOutcome(await request(`${row.url}&ver=5`), row.id);
       upsert.run(row.id, JSON.stringify(row));
       console.log(`${row.id} · ${row.outcome.status}`);
